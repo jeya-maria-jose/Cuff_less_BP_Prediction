@@ -1,8 +1,8 @@
 tic
 clc;
-clear all;
+%clear all;
 close all; 
-load('Part_1');
+%load('Part_1');
 FILE=[];
 
 
@@ -59,7 +59,7 @@ ppg_21_st = [];
 ppg_21_dt = [];
 for j=1:1:6
 for i=loc1(1,1):1:loc(1,1)
-    if(O1P(1,i)>=(v(j)*pk(1,1)+max(O1P)-pk1(1,1)))
+    if(O1P(1,i)>=(v(j)*pk(1,1)+pk1(1,1)))
         a=i;
    
         break
@@ -68,7 +68,7 @@ end
 
 for i=loc(1,1):1:loc1(1,2)
   
-    if(O1P(1,i)<=(v(j)*pk(1,1)+max(O1P)-pk1(1,1)))
+    if(O1P(1,i)<=(v(j)*pk(1,1)+ pk1(1,1)))
         b=i;
         
         break
