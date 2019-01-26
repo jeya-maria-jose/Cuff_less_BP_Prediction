@@ -5,7 +5,7 @@ from sklearn.linear_model import LinearRegression
 import numpy as np  
 from sklearn.metrics import mean_squared_error, r2_score
 
-dataset = pd.read_csv('Total.csv',names = ['alpha','PIR', 'ptt', 'bpmax' ,'bpmin', 'hrfinal', 'ih', 'il', 'meu'])
+dataset = pd.read_csv('finalclean.csv',names = ['alpha','PIR', 'ptt', 'bpmax' ,'bpmin', 'hrfinal', 'ih', 'il', 'meu', 'j', 'k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','aa','ab','ac'])
 
 X = dataset[['alpha','PIR', 'ptt','hrfinal', 'ih', 'il', 'meu']]
 
