@@ -18,8 +18,9 @@ In each matrix each row corresponds to one signal channel:
 
 ### Feature Extraction:
 
-<code> seven.m </code> - Code to extract the first 7 features (WN,PIR,PTT,HR,IH,IL,Meu)
-<code> seven.m </code> - Code to extract the ppg features 
+<code> seven_features.m </code> - Code to extract the first 7 features (WN,PIR,PTT,HR,IH,IL,Meu)
+
+<code> ppg_features.m </code> - Code to extract the ppg features 
 
 
 
