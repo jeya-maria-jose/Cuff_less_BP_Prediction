@@ -16,5 +16,11 @@ In each matrix each row corresponds to one signal channel:
 
 3: ECG signal, FS=125Hz; electrocardiogram from channel II 
 
+### Feature Extraction:
+
+<code> seven.m </code> - Code to extract the first 7 features (WN,PIR,PTT,HR,IH,IL,Meu)
+<code> seven.m </code> - Code to extract the ppg features 
+
+
 
 [Project_Page](https://sites.google.com/view/cufflessbp/home)
