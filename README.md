@@ -1,6 +1,6 @@
 # Cuff less Blood Pressure Prediction 
 
-Prediction of Blood Pressure from EEG and PPG signals using regression methods. 
+Prediction of Blood Pressure from ECG and PPG signals using regression methods. 
 
 ### Dataset:
 
