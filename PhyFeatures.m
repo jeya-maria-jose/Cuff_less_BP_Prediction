@@ -3,7 +3,7 @@ tic
 clc;
 %clear all;
 FILE=[];
-close all; 
+%close all; 
 %load('Part_4');
 for d=1:3000
     try
@@ -24,26 +24,17 @@ FP = filtfilt(b,a,O1P);
 %plot(FP)
 [Fy]=gradient(FP);
 [Fy1]=gradient(Fy);
-[Fy2]=gradient(Fy1);
-%plot(Fy2);
-% Second derivative
-% negative values to zero     
-%for j=1:1000               
-% if Fy1(j)<= 0            
-%      Fy1(j) = 0;         
- % end                     
-%end  
+%plot(Fy1);
 %Finding Inflection points
 for j=1:1000               
-  if ( Fy2(j)< 0.00002 && Fy2(j)>0) || (Fy2(j)> -0.00002 && Fy2(j)<0) %second derivative close to zero as it is discrete time series
-      Fy2(j)= 0;    
+  if ( Fy1(j)< 0.0002 && Fy1(j)>0) || (Fy1(j)> -0.0002 && Fy1(j)<0) %second derivative close to zero as it is discrete time series
+      Fy1(j)= 0;    
   end                      
 end   
-
 n=1;
 i=[];
 for j=1:1000               
-  if (Fy2(j)== 0) 
+  if (Fy1(j)== 0) 
    i(n)= j;
    n=n+1; %Counting number of inflection points
   end                      
@@ -60,7 +51,7 @@ for k2=2:6:n-1
    l2(p2)=O1P(h2(p2));
    p2=p2+1;
 end
-for k3=3:6:n-1
+for k3=3:n-1
    h3(p3)=i(k3);   
    l3(p3)=O1P(h3(p3));
    p3=p3+1;
@@ -82,7 +73,7 @@ for k6=6:6:n-1
 end 
 %AREA of the region between point (1,2) (1,3) (1,4) (1,5) (1,6)
 i1=1;
-for x1=1:9  
+for x1=1:fix((n-1)/6)  
     e1=1;
     for q1= h1(x1):h2(x1)
         a1(e1)= O1P(q1);
@@ -92,7 +83,7 @@ for x1=1:9
     i1=i1+1;
 end
 i2=1;
-for x1=1:9  
+for x1=1:fix((n-1)/6)  
     e1=1;
     for q2=h1(x1):h3(x1)
         a2(e1)= O1P(q2);
@@ -102,7 +93,7 @@ for x1=1:9
     i2=i2+1;
 end
 i3=1;
-for x1=1:9
+for x1=1:fix((n-1)/6)
     e1=1;
     for q3=h1(x1):h4(x1)
         a3(e1)= O1P(q3);
@@ -112,7 +103,7 @@ for x1=1:9
     i3=i3+1;
 end
 i4=1;
-for x1=1:9 
+for x1=1:fix((n-1)/6) 
     e1=1;
     for q4=h1(x1):h5(x1)
         a4(e1)= O1P(q4);
@@ -122,7 +113,7 @@ for x1=1:9
     i4=i4+1;
 end
 i5=1;
-for x1=1:9  
+for x1=1:fix((n-1)/6)
     e1=1;
     for q5=h1(x1):h6(x1)
         a5(e1)= O1P(q5);
@@ -132,11 +123,11 @@ for x1=1:9
     i5=i5+1;
 end
 
-for x2= 1:9
-    s1(x2)=((r5(x2)-r1(x2)))/r1(x2);
-    s2(x2)=((r5(x2)-r2(x2)))/r2(x2);
-    s3(x2)=((r5(x2)-r3(x2)))/r3(x2);
-    s4(x2)=((r5(x2)-r4(x2)))/r4(x2);
+for x2= 1:fix((n-1)/6)
+    s1(x2)=(abs(r5(x2)-r1(x2)))/r1(x2);
+    s2(x2)=(abs(r5(x2)-r2(x2)))/r2(x2);
+    s3(x2)=(abs(r5(x2)-r3(x2)))/r3(x2);
+    s4(x2)=(abs(r5(x2)-r4(x2)))/r4(x2);
 end
 S01=mean(s1);
 S02=mean(s2);
@@ -152,13 +143,13 @@ for u1=1:n-1
   break
   end
 end  
-v1=min(FP);
+%v1=min(FP);
 %LASI is the inverse of time difference b/w systolic peak and the next
 %inflection point
 lasi=1/(T(ip)-T(locp));
-for o=1:1000
-FP(o)=FP(o)+abs(v1);
-end
+%for o=1:1000
+%FP(o)=FP(o)+abs(v1);
+%end
 v2=max(FP);
 for o=1:1000
 FP1(o)=FP(o)/v2;
@@ -227,41 +218,5 @@ FILE=[FILE;filex];
         continue
     end    
 end
-
-%{
-%HR
-%plot(A);
-B=smooth(A); % ECG signal
-% negative values to zero
-for j1=1:1000
-  if B(j1)<= 0
-      B(j1) = 0;
-  end
-end
-%plot(B)
-% Adaptive threshold
-  wmh=0.2;
-  wfh=0.5;   
-  THmh=0.4*max(B);
-  THfh=0.8*max(B);
-  [pks1, locs1]=findpeaks(B, 'Minpeakheight', 0.8*max(B));
-  [pks3, locs3]=findpeaks(B, 'MinpeakHeight', 0.4*max(B));
-  loopcounter=0;
-  while(length(pks1)~=length(pks3))&& loopcounter<=10
-      a=1
-       delh=THmh-THfh;
-       THmmh=THmh-wmh*delh;
-       THffh=THfh-wfh*delh;
-       [pks1,locs1]=findpeaks(B,'Minpeakheight',THmmh);
-       [pks3,locs3]=findpeaks(B,'MinpeakHeight',THffh);
-       loopcounter=loopcounter+1;
-  end
-P3 =T(locs1);
-%RR interval
-RR=diff(P3);
-HR=60./RR;  % HR
-%}
-
 toc
-
 
