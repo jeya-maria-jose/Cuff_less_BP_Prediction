@@ -9,24 +9,25 @@ from sklearn.tree import DecisionTreeRegressor
 from sklearn.ensemble import AdaBoostRegressor
 
 
-dataset = pd.read_csv('cleaned_further.csv',names = ['alpha','PIR', 'ptt', 'bpmax' ,'bpmin', 'hrfinal', 'ih', 'il', 'meu', 'j', 'k','l','m','n','o','p','q','r','s'])
+dataset = pd.read_csv('dataset_with_physio_6_3.csv',names = ['ind','alpha','PIR', 'ptt', 'bpmax' ,'bpmin', 'hrfinal', 'ih', 'il', 'meu', 'j', 'k','l','m','n','o','p','q','r','s','p1','p2','p3','p4','p5','p6','p7','p8','p9'])
 
 
-X = dataset[['alpha','PIR', 'ptt', 'hrfinal', 'ih', 'il', 'meu', 'j', 'k','l','m','n','o','p','q','r','s']]
+X = dataset[[  'ptt','p1','p2','p3','p4','p5','p6','p7','p8','p9']]
 
 y = dataset[['bpmin']]
 
 sbp = list()
 dbp = list()
 real_BP = list()
-with open('cleaned_further.csv', 'r') as csvfile:
+with open('dataset_with_physio_6_3.csv', 'r') as csvfile:
 	csv_reader = csv.reader(csvfile, delimiter = ',')
 	print csv_reader
 	for row in csv_reader:
 		#ptt.append(float(row[2]))
-		sbp.append(float(row[3]))
-		dbp.append(float(row[4]))
+		sbp.append(float(row[4]))
+		dbp.append(float(row[5]))
 
+	
 	real_BP = list()
 	for i in range(len(sbp)):
 		BP_actual = (2*dbp[i] + sbp[i])/3
@@ -58,9 +59,9 @@ y_pre = regr_2.predict(X_test)
 # The mean squared error
 from sklearn import metrics  
 
-print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pred))  
-print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pred))  
-print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pred)))
+print('Mean Absolute Error:', metrics.mean_absolute_error(y_test, y_pre))  
+print('Mean Squared Error:', metrics.mean_squared_error(y_test, y_pre))  
+print('Root Mean Squared Error:', np.sqrt(metrics.mean_squared_error(y_test, y_pre)))
 
 
 
