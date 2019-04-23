@@ -28,3 +28,14 @@ In each matrix each row corresponds to one signal channel:
 
 
 [Project_Page](https://sites.google.com/view/cufflessbp/home)
+
+## Using the DL Code:
+
+Dependencies :
+
+1. Python 3 
+2. Pytorch
+
+
+<code> git clone https://github.com/jeya-maria-jose/Cuff_less_BP_Prediction </code>
+<code> cd Cuff_less_BP_Prediction/ </code>
