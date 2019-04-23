@@ -37,6 +37,8 @@ Dependencies :
 2. Pytorch
 
 
-<code> git clone https://github.com/jeya-maria-jose/Cuff_less_BP_Prediction </code>
+<code> git clone https://github.com/jeya-maria-jose/Cuff_less_BP_Prediction 
 
-<code> cd Cuff_less_BP_Prediction/ </code>
+cd Cuff_less_BP_Prediction/ </code>
+
+
