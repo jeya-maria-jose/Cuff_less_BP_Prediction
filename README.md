@@ -38,7 +38,6 @@ Dependencies :
 
 
 <code> git clone https://github.com/jeya-maria-jose/Cuff_less_BP_Prediction 
-
 cd Cuff_less_BP_Prediction/ </code>
 
 
