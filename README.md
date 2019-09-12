@@ -7,7 +7,6 @@ This repository hosts the code for Prediction of Blood Pressure from ECG and PPG
 2. Deep learning based regression.
 
 
-[Project_Page](https://sites.google.com/view/cufflessbp/home)
 
 ### Getting Started:
 
