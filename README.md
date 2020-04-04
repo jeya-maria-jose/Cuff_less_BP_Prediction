@@ -86,6 +86,4 @@ python cnn_test.py
 
 The code is not completely clean as the data directories are initialized manually. Please make sure the directories are changed according to the remote server where the code is run. 
 
-### Results 
 
-Coming Soon
