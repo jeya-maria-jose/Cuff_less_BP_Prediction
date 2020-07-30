@@ -30,6 +30,14 @@ In each matrix each row corresponds to one signal channel:
 
 3: ECG signal, FS=125Hz; electrocardiogram from channel II 
 
+Data processed for our experiments: [Link](https://drive.google.com/drive/folders/1n24ahZCxAAdkkmCfVrQeZXsSl4w0P6Jg?usp=sharing)
+
+1. Cleaned folder contains BP records after thresholding them according to Kauchee et al. 2017
+
+2. GT contains the ground truth SBP, DBP, MAP and class number (depending on the threshold). Ignore the class column as it has not been used for any experiments reported in the papers. 
+
+3. data folder is the whole data as taken from UCI repository.
+
 
 ## Feature Extraction and Machine Learning based method:
 
