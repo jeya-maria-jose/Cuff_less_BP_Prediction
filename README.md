@@ -30,7 +30,7 @@ In each matrix each row corresponds to one signal channel:
 
 3: ECG signal, FS=125Hz; electrocardiogram from channel II 
 
-Data processed for our experiments: [Link](https://drive.google.com/drive/folders/1n24ahZCxAAdkkmCfVrQeZXsSl4w0P6Jg?usp=sharing)
+Processed version of the data from UCI repository used for our experiments: [Link](https://drive.google.com/drive/folders/1n24ahZCxAAdkkmCfVrQeZXsSl4w0P6Jg?usp=sharing)
 
 1. Cleaned folder contains BP records after thresholding them according to Kauchee et al. 2017
 
